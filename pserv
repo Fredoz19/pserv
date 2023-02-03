@@ -1,0 +1,15 @@
+[Unit]
+Description=Prysm
+After=network.target
+Wants=network.target
+  
+[Service]
+User=eth
+Group=eth
+Type=simple
+Restart=always
+RestartSec=5
+ExecStart=/home/eth/consensus/prysm/prysm.sh beacon-chain --execution-endpoint=http://localhost:8551 --jwt-secret=/home/eth/mainnet/geth/jwtsecret --checkpoint-sync-url https://mainnet-checkpoint-sync.stakely.io --accept-terms-of-use
+
+[Install]
+WantedBy=default.target
